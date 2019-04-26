@@ -22,8 +22,15 @@ set hlsearch
 "   Force utf-8 encoding
 set encoding=utf-8
 
-" Use filetype detection and file-based automatic indenting.
-filetype plugin indent on
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+  " Use filetype detection and file-based automatic indenting.
+  filetype plugin indent on
+
+  " Use actual tab chars in Makefiles.
+  autocmd FileType make set tabstop=4 shiftwidth=4 softtabstop=0 noexpandtab
+endif
+
 " show existing tab with 2 spaces width
 set tabstop=2
 " when indenting with '>', use 2 spaces width
